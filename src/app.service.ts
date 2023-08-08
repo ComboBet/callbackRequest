@@ -11,10 +11,17 @@ export class AppService {
   }
 
   async reply(data: any): Promise<any> {
-    const res = await axios({
-      url: data.url,
-      method: data.method,
-      data: data.data,
-    });
+    try {
+      console.log('\n\n# ------------------------------------');
+      const res = await axios({
+        url: data.url,
+        method: data.method,
+        data: data.data,
+      });
+      console.log(res);
+      return res.data;
+    } catch (e) {
+      throw e;
+    }
   }
 }
